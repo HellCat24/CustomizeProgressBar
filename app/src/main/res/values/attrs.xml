@@ -13,7 +13,14 @@
         <attr name="borderColor" format="color" />
         <attr name="textColor" format="color" />
 
-        <attr name="isShowProgress" format="color" />
+        <attr name="startGradientColor" format="color" />
+        <attr name="endGradientColor" format="color" />
+
+        <attr name="isShowProgress" format="boolean" />
+        <attr name="isGradientAvailable" format="boolean" />
+        <attr name="isSpinning" format="boolean" />
+
+        <attr name="text" format="string" />
 
         <attr name="increment" format="integer" />
         <attr name="speed" format="integer" />

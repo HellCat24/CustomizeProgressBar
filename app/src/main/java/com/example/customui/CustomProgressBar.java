@@ -15,6 +15,8 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.ArrayList;
+
 @SuppressLint({"DrawAllocation", "HandlerLeak"})
 public class CustomProgressBar extends View {
 
@@ -29,6 +31,9 @@ public class CustomProgressBar extends View {
     private int mainColor;
     private int borderColor;
     private int backgroundColor;
+
+    private int startGradientColor;
+    private int endGradientColor;
 
     private int textColor;
 
@@ -56,6 +61,7 @@ public class CustomProgressBar extends View {
     private Paint textPaint;
 
     private boolean isSpinning;
+    private boolean isGradientAvailable;
     private boolean isShowProgress;
     private boolean isUpdateProgress;
 
@@ -97,14 +103,14 @@ public class CustomProgressBar extends View {
 
         if (isSpinning) {
             canvas.drawArc(middle, currentProgress, 50, false, mainPaint);
-            if (text != null) canvas.drawText(text, centerX, centerY + 5, textPaint);
         } else {
             int currentProgress = (int) (this.currentProgress * ONE_PERCENT_IN_DEGREES);
             canvas.drawArc(middle, 0, currentProgress, false, mainPaint);
-            if(isShowProgress){
+            if (isShowProgress) {
                 canvas.drawText(Integer.toString((int) (currentProgress / ONE_PERCENT_IN_DEGREES)), centerX, centerY + 5, textPaint);
             }
         }
+        if (text != null) canvas.drawText(text, centerX, centerY + textSize / 2, textPaint);
         super.onDraw(canvas);
     }
 
@@ -169,7 +175,6 @@ public class CustomProgressBar extends View {
 
     private void setUpPaints() {
 
-        RadialGradient gradient = new RadialGradient(centerX, centerY, outsideRadius, Color.BLACK, mainColor,android.graphics.Shader.TileMode.MIRROR);
 
         backgroundPaint = new Paint();
         backgroundPaint.setDither(true);
@@ -180,7 +185,13 @@ public class CustomProgressBar extends View {
 
         mainPaint = new Paint();
         mainPaint.setDither(true);
-        mainPaint.setShader(gradient);
+        if (isGradientAvailable) {
+            RadialGradient gradient = new RadialGradient(centerX, centerY, outsideRadius, startGradientColor, endGradientColor, android.graphics.Shader.TileMode.MIRROR);
+            mainPaint.setShader(gradient);
+        } else {
+            mainPaint.setColor(mainColor);
+        }
+
         mainPaint.setStyle(Paint.Style.STROKE);
         mainPaint.setStrokeWidth(width * 2);
         mainPaint.setAntiAlias(true);
@@ -284,7 +295,7 @@ public class CustomProgressBar extends View {
                 0, 0);
 
         try {
-            isSpinning = true;
+            isSpinning = a.getBoolean(R.styleable.CustomProgressBar_isSpinning, true);
 
             outsideRadius = a.getDimension(R.styleable.CustomProgressBar_radius, MEDIUM);
             width = a.getDimension(R.styleable.CustomProgressBar_width, outsideRadius / 5);
@@ -301,16 +312,25 @@ public class CustomProgressBar extends View {
             borderColor = a.getColor(R.styleable.CustomProgressBar_borderColor, Color.GRAY);
             textColor = a.getColor(R.styleable.CustomProgressBar_textColor, Color.DKGRAY);
 
+            startGradientColor = a.getColor(R.styleable.CustomProgressBar_startGradientColor, Color.BLACK);
+            endGradientColor = a.getColor(R.styleable.CustomProgressBar_endGradientColor, mainColor);
+
+            text = a.getString(R.styleable.CustomProgressBar_text);
+
             speed = a.getInteger(R.styleable.CustomProgressBar_speed, 30);
             increment = a.getInteger(R.styleable.CustomProgressBar_increment, 1);
 
             isShowProgress = a.getBoolean(R.styleable.CustomProgressBar_isShowProgress, false);
+            isGradientAvailable = a.getBoolean(R.styleable.CustomProgressBar_isShowProgress, true);
 
             spinHandler.sendEmptyMessage(0);
 
         } finally {
             a.recycle();
         }
+    }
+
+    private void setDiagramParams(ArrayList<Integer> integers){
 
     }
 }
