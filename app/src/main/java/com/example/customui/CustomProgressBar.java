@@ -51,6 +51,7 @@ public class CustomProgressBar extends View {
     private float middleRadius;
 
     private Paint borderPaint;
+    private Paint backgroundPaint;
     private Paint mainPaint;
     private Paint textPaint;
 
@@ -92,6 +93,7 @@ public class CustomProgressBar extends View {
 
         canvas.drawArc(outside, 0, 360, false, borderPaint);
         canvas.drawArc(inside, 0, 360, false, borderPaint);
+        canvas.drawArc(middle, 0, 360, false, backgroundPaint);
 
         if (isSpinning) {
             canvas.drawArc(middle, currentProgress, 50, false, mainPaint);
@@ -168,6 +170,13 @@ public class CustomProgressBar extends View {
     private void setUpPaints() {
 
         RadialGradient gradient = new RadialGradient(centerX, centerY, outsideRadius, Color.BLACK, mainColor,android.graphics.Shader.TileMode.MIRROR);
+
+        backgroundPaint = new Paint();
+        backgroundPaint.setDither(true);
+        backgroundPaint.setColor(backgroundColor);
+        backgroundPaint.setStyle(Paint.Style.STROKE);
+        backgroundPaint.setStrokeWidth(width * 2);
+        backgroundPaint.setAntiAlias(true);
 
         mainPaint = new Paint();
         mainPaint.setDither(true);

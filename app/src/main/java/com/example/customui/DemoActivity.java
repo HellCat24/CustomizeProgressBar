@@ -24,6 +24,7 @@ public class DemoActivity extends Activity {
 		mProgressBar.setColor(Color.GREEN);
 		mProgressBar.setText("Wait..");
         mProgressBar.updatePrjgressTo(90);
+        mProgressBar.setRadius(300);
 		//new SomeDownloader().execute();
 
 	}
