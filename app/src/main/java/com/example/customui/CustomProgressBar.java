@@ -64,12 +64,15 @@ public class CustomProgressBar extends View {
     private boolean isGradientAvailable;
     private boolean isShowProgress;
     private boolean isUpdateProgress;
+    private boolean isDiagram;
 
     private String text;
 
     private RectF outside;
     private RectF middle;
     private RectF inside;
+
+    float[] diagramAngles;
 
     private Handler spinHandler = new Handler() {
 
@@ -97,20 +100,27 @@ public class CustomProgressBar extends View {
     @Override
     protected synchronized void onDraw(Canvas canvas) {
 
-        canvas.drawArc(outside, 0, 360, false, borderPaint);
-        canvas.drawArc(inside, 0, 360, false, borderPaint);
-        canvas.drawArc(middle, 0, 360, false, backgroundPaint);
+        if (isDiagram) {
+            canvas.drawArc(outside, 0, 360, false, borderPaint);
+            canvas.drawArc(inside, 0, 360, false, borderPaint);
+            canvas.drawArc(middle, 0, 360, false, backgroundPaint);
 
-        if (isSpinning) {
-            canvas.drawArc(middle, currentProgress, 50, false, mainPaint);
+            if (isSpinning) {
+                canvas.drawArc(middle, currentProgress, 50, false, mainPaint);
+            } else {
+                int currentProgress = (int) (this.currentProgress * ONE_PERCENT_IN_DEGREES);
+                canvas.drawArc(middle, 0, currentProgress, false, mainPaint);
+                if (isShowProgress) {
+                    canvas.drawText(Integer.toString((int) (currentProgress / ONE_PERCENT_IN_DEGREES)), centerX, centerY + 5, textPaint);
+                }
+            }
+            if (text != null) canvas.drawText(text, centerX, centerY + textSize / 2, textPaint);
         } else {
-            int currentProgress = (int) (this.currentProgress * ONE_PERCENT_IN_DEGREES);
-            canvas.drawArc(middle, 0, currentProgress, false, mainPaint);
-            if (isShowProgress) {
-                canvas.drawText(Integer.toString((int) (currentProgress / ONE_PERCENT_IN_DEGREES)), centerX, centerY + 5, textPaint);
+            for (int i = 0; i < diagramAngles.length; i++) {
+                canvas.drawArc(middle, 0, diagramAngles[i], false, backgroundPaint);
             }
         }
-        if (text != null) canvas.drawText(text, centerX, centerY + textSize / 2, textPaint);
+
         super.onDraw(canvas);
     }
 
@@ -330,7 +340,19 @@ public class CustomProgressBar extends View {
         }
     }
 
-    private void setDiagramParams(ArrayList<Integer> integers){
-
+    private void setDiagramParams(ArrayList<Integer> integers) {
+        isDiagram = true;
+        float[] diagramAngles = new float[integers.size()];
+        int sum = 0;
+        for (Integer number : integers) {
+            sum += number;
+        }
+        for (int i = 0; i < integers.size(); i++) {
+            if (i == 0) {
+                diagramAngles[i] = (float) (sum / integers.get(i) * ONE_PERCENT_IN_DEGREES);
+            } else {
+                diagramAngles[i] = (float) (sum / integers.get(i) * ONE_PERCENT_IN_DEGREES + diagramAngles[i - 1]);
+            }
+        }
     }
 }
