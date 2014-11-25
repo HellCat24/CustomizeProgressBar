@@ -27,14 +27,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int borderColor=0x7f010005;
-        /** <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int increment=0x7f010008;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -43,7 +35,39 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int isShowProgress=0x7f010007;
+        public static final int endGradientColor=0x7f010008;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int increment=0x7f01000d;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int isGradientAvailable=0x7f01000a;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int isShowProgress=0x7f010009;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int isSpinning=0x7f01000b;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -54,7 +78,7 @@ containing a value of this type.
 <tr><td><code>right</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int labelPosition=0x7f01000b;
+        public static final int labelPosition=0x7f010010;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -62,7 +86,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int padding=0x7f01000a;
+        public static final int padding=0x7f01000f;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -89,7 +113,24 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int speed=0x7f010009;
+        public static final int speed=0x7f01000e;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int startGradientColor=0x7f010007;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int text=0x7f01000c;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -167,26 +208,36 @@ containing a value of this type.
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #CustomProgressBar_backgroundColor com.example.customui:backgroundColor}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_borderColor com.example.customui:borderColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomProgressBar_endGradientColor com.example.customui:endGradientColor}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_increment com.example.customui:increment}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomProgressBar_isGradientAvailable com.example.customui:isGradientAvailable}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_isShowProgress com.example.customui:isShowProgress}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomProgressBar_isSpinning com.example.customui:isSpinning}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_labelPosition com.example.customui:labelPosition}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_padding com.example.customui:padding}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_progressColor com.example.customui:progressColor}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_radius com.example.customui:radius}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_speed com.example.customui:speed}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomProgressBar_startGradientColor com.example.customui:startGradientColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomProgressBar_text com.example.customui:text}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_textColor com.example.customui:textColor}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_textSize com.example.customui:textSize}</code></td><td></td></tr>
            <tr><td><code>{@link #CustomProgressBar_width com.example.customui:width}</code></td><td></td></tr>
            </table>
            @see #CustomProgressBar_backgroundColor
            @see #CustomProgressBar_borderColor
+           @see #CustomProgressBar_endGradientColor
            @see #CustomProgressBar_increment
+           @see #CustomProgressBar_isGradientAvailable
            @see #CustomProgressBar_isShowProgress
+           @see #CustomProgressBar_isSpinning
            @see #CustomProgressBar_labelPosition
            @see #CustomProgressBar_padding
            @see #CustomProgressBar_progressColor
            @see #CustomProgressBar_radius
            @see #CustomProgressBar_speed
+           @see #CustomProgressBar_startGradientColor
+           @see #CustomProgressBar_text
            @see #CustomProgressBar_textColor
            @see #CustomProgressBar_textSize
            @see #CustomProgressBar_width
@@ -194,7 +245,9 @@ containing a value of this type.
         public static final int[] CustomProgressBar = {
             0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
             0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
-            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b
+            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
+            0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f01000f,
+            0x7f010010
         };
         /**
           <p>This symbol is the offset where the {@link com.example.customui.R.attr#backgroundColor}
@@ -227,6 +280,21 @@ containing a value of this type.
         */
         public static final int CustomProgressBar_borderColor = 5;
         /**
+          <p>This symbol is the offset where the {@link com.example.customui.R.attr#endGradientColor}
+          attribute's value can be found in the {@link #CustomProgressBar} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.customui:endGradientColor
+        */
+        public static final int CustomProgressBar_endGradientColor = 8;
+        /**
           <p>This symbol is the offset where the {@link com.example.customui.R.attr#increment}
           attribute's value can be found in the {@link #CustomProgressBar} array.
 
@@ -239,14 +307,27 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.example.customui:increment
         */
-        public static final int CustomProgressBar_increment = 8;
+        public static final int CustomProgressBar_increment = 13;
+        /**
+          <p>This symbol is the offset where the {@link com.example.customui.R.attr#isGradientAvailable}
+          attribute's value can be found in the {@link #CustomProgressBar} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.customui:isGradientAvailable
+        */
+        public static final int CustomProgressBar_isGradientAvailable = 10;
         /**
           <p>This symbol is the offset where the {@link com.example.customui.R.attr#isShowProgress}
           attribute's value can be found in the {@link #CustomProgressBar} array.
 
 
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -254,7 +335,21 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.example.customui:isShowProgress
         */
-        public static final int CustomProgressBar_isShowProgress = 7;
+        public static final int CustomProgressBar_isShowProgress = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.example.customui.R.attr#isSpinning}
+          attribute's value can be found in the {@link #CustomProgressBar} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.customui:isSpinning
+        */
+        public static final int CustomProgressBar_isSpinning = 11;
         /**
           <p>This symbol is the offset where the {@link com.example.customui.R.attr#labelPosition}
           attribute's value can be found in the {@link #CustomProgressBar} array.
@@ -271,7 +366,7 @@ containing a value of this type.
 </table>
           @attr name com.example.customui:labelPosition
         */
-        public static final int CustomProgressBar_labelPosition = 11;
+        public static final int CustomProgressBar_labelPosition = 16;
         /**
           <p>This symbol is the offset where the {@link com.example.customui.R.attr#padding}
           attribute's value can be found in the {@link #CustomProgressBar} array.
@@ -285,7 +380,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.example.customui:padding
         */
-        public static final int CustomProgressBar_padding = 10;
+        public static final int CustomProgressBar_padding = 15;
         /**
           <p>This symbol is the offset where the {@link com.example.customui.R.attr#progressColor}
           attribute's value can be found in the {@link #CustomProgressBar} array.
@@ -330,7 +425,36 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.example.customui:speed
         */
-        public static final int CustomProgressBar_speed = 9;
+        public static final int CustomProgressBar_speed = 14;
+        /**
+          <p>This symbol is the offset where the {@link com.example.customui.R.attr#startGradientColor}
+          attribute's value can be found in the {@link #CustomProgressBar} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.customui:startGradientColor
+        */
+        public static final int CustomProgressBar_startGradientColor = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.example.customui.R.attr#text}
+          attribute's value can be found in the {@link #CustomProgressBar} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.customui:text
+        */
+        public static final int CustomProgressBar_text = 12;
         /**
           <p>This symbol is the offset where the {@link com.example.customui.R.attr#textColor}
           attribute's value can be found in the {@link #CustomProgressBar} array.

@@ -16,6 +16,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 @SuppressLint({"DrawAllocation", "HandlerLeak"})
 public class CustomProgressBar extends View {
@@ -100,7 +101,7 @@ public class CustomProgressBar extends View {
     @Override
     protected synchronized void onDraw(Canvas canvas) {
 
-        if (isDiagram) {
+        if (!isDiagram) {
             canvas.drawArc(outside, 0, 360, false, borderPaint);
             canvas.drawArc(inside, 0, 360, false, borderPaint);
             canvas.drawArc(middle, 0, 360, false, backgroundPaint);
@@ -116,9 +117,18 @@ public class CustomProgressBar extends View {
             }
             if (text != null) canvas.drawText(text, centerX, centerY + textSize / 2, textPaint);
         } else {
-            for (int i = 0; i < diagramAngles.length; i++) {
-                canvas.drawArc(middle, 0, diagramAngles[i], false, backgroundPaint);
+            if (diagramAngles != null) {
+                for (int i = 0; i < diagramAngles.length; i++) {
+                    backgroundPaint.setColor(getRandomColor());
+                    if (i == 0) {
+                        canvas.drawArc(middle, 0, diagramAngles[i] + 2, false, backgroundPaint);
+                    } else {
+                        canvas.drawArc(middle,diagramAngles[i - 1], Math.abs(diagramAngles[i] - diagramAngles[i - 1]) + 2, false, backgroundPaint);
+                    }
+
+                }
             }
+            isDiagram = false;
         }
 
         super.onDraw(canvas);
@@ -340,19 +350,26 @@ public class CustomProgressBar extends View {
         }
     }
 
-    private void setDiagramParams(ArrayList<Integer> integers) {
+    public void setDiagramParams(ArrayList<Float> integers) {
         isDiagram = true;
-        float[] diagramAngles = new float[integers.size()];
-        int sum = 0;
-        for (Integer number : integers) {
+        isSpinning = false;
+        diagramAngles = new float[integers.size()];
+        float sum = 0;
+        for (Float number : integers) {
             sum += number;
         }
         for (int i = 0; i < integers.size(); i++) {
             if (i == 0) {
-                diagramAngles[i] = (float) (sum / integers.get(i) * ONE_PERCENT_IN_DEGREES);
+                diagramAngles[i] = (float) ((integers.get(i) * 100.0 / sum) * ONE_PERCENT_IN_DEGREES);
             } else {
-                diagramAngles[i] = (float) (sum / integers.get(i) * ONE_PERCENT_IN_DEGREES + diagramAngles[i - 1]);
+                diagramAngles[i] = (float) ((integers.get(i) * 100.0 / sum) * ONE_PERCENT_IN_DEGREES + diagramAngles[i - 1]);
             }
         }
+        int i = diagramAngles.length;
+    }
+
+    private int getRandomColor() {
+        Random rnd = new Random();
+        return Color.argb(255, rnd.nextInt(128) + 128, rnd.nextInt(128) + 128, rnd.nextInt(128) + 128);
     }
 }
